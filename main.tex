@@ -3,6 +3,7 @@
 \usepackage{cite}
 \usepackage{listings}
 \usepackage{hyperref}
+\usepackage{color}
 % \usepackage{biblatex}
 
 % \bibliographystyle{IEEEtran}
@@ -11,6 +12,9 @@
 \lstset{
     language=[LaTeX]TeX,
     keepspaces,
+    captionpos=b,
+    breaklines=true,
+    frame=tb,
 }
 
 \title{Learning \LaTeX}
@@ -80,7 +84,7 @@
     The extension adds features that helps you writing .tex document, like
     auto-completion, auto-compile, and live document preview.
 
-\subsection{Your First Document}
+\subsection{Your first document}
     It's time to create your first latex document.
     Create a new file named \texttt{first.tex}, and fill it with:
 
@@ -91,12 +95,12 @@
     Open the PDF file and you should file the text `This is my first latex document'
     in it, and congratulations, you have created your first latex document.
 
-\subsection{Document Class}
+\subsection{Document class}
     You should see that the document in previous subsection already have a lot
     of things set up for you,
     like margin, font and font size, spacing, etc, and you only have to write the
     text you wanted.
-    That part is set up with \texttt{\textbackslash documentclass\{article\}} part.
+    That part is set up with \lstinline!\documentclass{article}! part.
     That command lets you specify to the compiler that you want to create an 
     article. There are many built-in document classes already specified for
     various uses. Class `article' is for articles in scientific journals,
@@ -105,9 +109,7 @@
 
 \subsection{Document environment}
     The next part is
-    \texttt{\textbackslash begin\{document\}}
-    \texttt{...}
-    \texttt{\textbackslash end\{document\}}.
+    \lstinline!\begin{document}...\end{document}!
     That pair of command specify an `environment' in which the item inside it have
     some rules applied to it. In the example we used `document' environment,
     which tells the compiler that it is our document and then everything inside 
@@ -126,8 +128,9 @@
 
 \subsection{Line and paragraph}
     Create file \texttt{second.tex} and type:
-    \lstinputlisting[label=paragraph, caption=second.tex]{lst/lst2.tex}
-    And compile the file.
+    \lstinputlisting[label=second, caption=second.tex]{lst/lst2.tex}
+    And compile the file. There is many other thing in the listing,
+    but we will focus on section 1.1.
 
     You could see that how the text are typed in the .tex file
     didn't affect how the paragraph are being splitted in the
@@ -136,5 +139,25 @@
     And so, the lines without blank lines between in will be treated
     as one paragraph in the result. LaTeX will automatically add
     separating spaces.
+
+\subsection{Titles and author}
+    Back to listing \ref{second}, the code in line 3-5 specifies
+    the documents title, author, and written date. 
+    But this only specify the attributes and doesn't create any text
+    in output.
+    To put the title and author in the output file, we use
+    \lstinline!\maketitle! to print it.
+
+\subsection{Document structure}
+    In listing \ref{second}, There are also one more thing, that is
+    the section and subsection. Those are the document structure marker,
+    using that we could structure our document into sections and subsections.
+    The section numberings are automatic.
+    Using the document structure could also help us in generating automatic
+    table of contents.
+
+    This is specifically for `article' document class.
+    For other classes, the structuring might be different, like `book' class
+    has chapter structure, etc.
 
 \end{document}
