@@ -2,9 +2,16 @@
 
 \usepackage{cite}
 \usepackage{listings}
+\usepackage{hyperref}
+% \usepackage{biblatex}
 
 % \bibliographystyle{IEEEtran}
 % \bibliography{main}
+
+\lstset{
+    language=[LaTeX]TeX,
+    keepspaces,
+}
 
 \title{Learning \LaTeX}
 \author{
@@ -17,6 +24,7 @@
         Email: p.ridho@students.itb.ac.id\\
     }
 }
+\date{28 April 2019}
 
 \begin{document}
 \maketitle
@@ -30,13 +38,14 @@
 
     But there are better alternatives to write documents professionally.
     One of the alternatives is \LaTeX.
-    With this paper I would like to learn and use \LaTeX to write this paper,
+    With this paper I would like to learn and use \LaTeX{} to write this paper,
     and share the experiences in learning to use \LaTeX.
 \end{abstract}
 
 \section{Introduction}
-    LaTeX (stylized: \LaTeX), is a document preparation system. When writing,
-    the writer uses plain text instead of formatted text found in WYSIWYG text
+    LaTeX (stylized as \LaTeX), is a document preparation system as an improvement
+    on TeX system created by Donald Knuth.
+    When writing using LaTeX, the writer uses plain text instead of formatted text found in WYSIWYG text
     editor like Microsoft Word. The writer uses markup tagging to define the 
     structure of a document, to stylize text in a document.
     The writer usually writes the document in a .tex file, and then use program
@@ -52,5 +61,67 @@
     LaTeX is widely used in academia for publication of scientific documents
     in many fields.
 
+\section{Learning \LaTeX}
+\subsection{Installation}
+    Steps to install LaTeX depends on your operating system.
+
+    If you use Windows, you could use MiKTeX (\url{https://miktex.org}),
+    which is a Windows distribution of
+    LaTeX that includes additional packages and a TeX editor called TeXworks.
+
+    On my system which uses Linux, specifically Arch Linux, where usually 
+    TeX Live is used.
+    To install TeX Live in Arch Linux, you just run \texttt{pacman -S texlive-most}
+    which already includes the LaTeX binary and additional packages.
+
+    You could write .tex document in any plain text editor, even notepad.
+    But for ease, I use Visual Studio Code (\url{https://code.visualstudio.com/})
+    with LaTeX Workshop extension installed.
+    The extension adds features that helps you writing .tex document, like
+    auto-completion, auto-compile, and live document preview.
+
+\subsection{Your First Document}
+    It's time to create your first latex document.
+    Create a new file named \texttt{first.tex}, and fill it with:
+
+    \lstinputlisting[label=lst1, caption=first.tex]{lst/lst1.tex}
+
+    Then open terminal in your current folder and run \texttt{pdflatex first.tex}
+    to compile the document into a PDF file named \texttt{first.pdf}.
+    Open the PDF file and you should file the text `This is my first latex document'
+    in it, and congratulations, you have created your first latex document.
+
+\subsection{Document Class}
+    You should see that the document in previous subsection already have a lot
+    of things set up for you,
+    like margin, font and font size, spacing, etc, and you only have to write the
+    text you wanted.
+    That part is set up with \texttt{\textbackslash documentclass\{article\}} part.
+    That command lets you specify to the compiler that you want to create an 
+    article. There are many built-in document classes already specified for
+    various uses. Class `article' is for articles in scientific journals,
+    presentations, etc, `book' is for real book, `letter' is for creating letters,
+    `beamer' for writing presentations, and many other for more specific uses.
+
+\subsection{Document environment}
+    The next part is
+    \texttt{\textbackslash begin\{document\}}
+    \texttt{...}
+    \texttt{\textbackslash end\{document\}}.
+    That pair of command specify an `environment' in which the item inside it have
+    some rules applied to it. In the example we used `document' environment,
+    which tells the compiler that it is our document and then everything inside 
+    the environment will be written in output document.
+    This also means, any normal text outside of the document environment will
+    not be printed. In fact, we will get an error when compiling if we have normal
+    text outside of document environment. 
+
+    There are many other environment for other specific uses,
+    like `description', `list', `enumerate' and `itemize' to create
+    various numbered and bulleted lists, `figure' and `table' to
+    create figures and tables, `math' and `displaymath' to type math,
+    `array' to create array, `equation' to type equations, and many
+    other more. We also could create our own custom enviroment or
+    use enviroments create by other people by using packages.
 
 \end{document}
