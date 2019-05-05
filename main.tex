@@ -4,10 +4,8 @@
 \usepackage{listings}
 \usepackage{hyperref}
 \usepackage{color}
+\usepackage{amsmath}
 % \usepackage{biblatex}
-
-% \bibliographystyle{IEEEtran}
-% \bibliography{main}
 
 \lstset{
     language=[LaTeX]TeX,
@@ -159,5 +157,61 @@
     This is specifically for `article' document class.
     For other classes, the structuring might be different, like `book' class
     has chapter structure, etc.
+
+\subsection{Packages}
+    LaTeX and TeX is different. As stated in the Introduction, LaTeX is an improvement
+    from TeX. One of the improvement is ability to uses packages. Packages is just
+    like in many programming languages, where we could import functions and add
+    additional functionalities.
+
+    Importing packages in LaTeX is done with \lstinline!\usepackage{packagename}! command,
+    and usually you put the command between \lstinline!\documentclass{}!
+    and \lstinline!\begin{document}!.
+
+\subsection{Math}
+    In many academic papers, we want to insert math equations to the document.
+    There are many ways we could insert equations that fit our needs.
+
+    First is inline equation, which is put inline with the text, one of the example
+    of the result is $f(x) = x^2$, which is typed like \lstinline!$f(x) = x^2$!.
+
+    Second is displayed equation, in which the equation have it own line.
+    Example: `\lstinline!\[ 1 + 2 = 3 \]!'
+    Which results in:
+    \[ 1 + 2 = 3 \]
+
+    Third is align environment, in which you use `align' and `align*' environment
+    to write multiple equation that is aligned.
+    We need import `amsmath' package to get this enviroment.
+    Example:
+    \begin{lstlisting}[label=alignmath, caption={Align environment example}]
+\begin{align*}
+1 + 2 &= 3\\
+4 &= 3 + 1
+\end{align*}
+    \end{lstlisting}
+    Which results in:
+    \begin{align*}
+    1 + 2 &= 3\\
+    4 &= 3 + 1
+    \end{align*}
+    `align*' enviroment will align the equation on the `\&' mark,
+    and the `\textbackslash \textbackslash' is used to split the equations.
+    `align' (notice the lack of `*') will also insert numbering for
+    each line of equation.
+
+\subsection{Code listing}
+    Listings are code snippets like listing \ref{lst1} and \ref{second}.
+    You could insert code listing in your document by using the `listings' package,
+    and then writing the code inside a `lstlisting' environment.
+
+    You could customize the appearance, the language, font, and many others,
+    and you could customize them individually for each listing enviroment,
+    or you could set them globally with \lstinline!\lstset{}! in the beginning
+    of the document before you start the document environment.
+
+\bibliographystyle{IEEEtran}
+\bibliography{main}
+\nocite{vellage_2017, ieeetran, latexwb}
 
 \end{document}
